@@ -17,3 +17,13 @@ def charFrequency(book_text):
             char_dict[ch] = 1
             
     return char_dict
+
+def sortChars(char_dict):
+    characters = []
+    for char, num in char_dict.items():
+        characters.append({"char": char, "num": num})
+    characters.sort(reverse=True, key=sort_on)
+    return characters
+
+def sort_on(item):
+    return item["num"]

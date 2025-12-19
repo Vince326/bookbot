@@ -1,4 +1,5 @@
 from stats import wordCount, charFrequency
+from stats import sortChars
 
 def get_book_text (filePath):
     
@@ -13,9 +14,26 @@ def get_book_text (filePath):
 
 def main():
     book_text = get_book_text("books/frankenstein.txt")
+
+    print("============ BOOKBOT ============")
+    print("Analyzing book found at books/frankenstein.txt...")
+    print("----------- Word Count ----------")
+    
     book_word_count = wordCount(book_text)
-    book_dict = charFrequency(book_text)
-    print(book_dict)
+    print(f"Found {book_word_count} total words")
+
+    print("--------- Character Count -------")
+    char_dict = charFrequency(book_text)
+    sorted_list = sortChars(char_dict)
+
+    for char in sorted_list:
+        ch = char["char"]
+        count = char["num"]
+        if ch.isalpha():
+            print(f"{ch}: {count}")
+
+    print("============= END ===============")
+    
     
 
 

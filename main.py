@@ -1,5 +1,6 @@
 from stats import wordCount, charFrequency
 from stats import sortChars
+import sys
 
 def get_book_text (filePath):
     
@@ -13,10 +14,15 @@ def get_book_text (filePath):
 
 
 def main():
-    book_text = get_book_text("books/frankenstein.txt")
+
+    if len(sys.argv) != 2:
+        print("Usage: python3 main.py <path_to_book>")
+        sys.exit(1)
+
+    book_text = get_book_text(sys.argv[1])
 
     print("============ BOOKBOT ============")
-    print("Analyzing book found at books/frankenstein.txt...")
+    print(f"Analyzing book found at {sys.argv[1]}")
     print("----------- Word Count ----------")
     
     book_word_count = wordCount(book_text)
